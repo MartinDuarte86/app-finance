@@ -4,9 +4,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "typecheck": "pnpm -r typecheck",
+  "scripts": { "dev": "concurrently -n API,WEB -c auto \"pnpm -C apps/api start:dev\" \"pnpm -C apps/web dev\"",
+    "dev:api": "pnpm -C apps/api start:dev",
+    "dev:web": "pnpm -C apps/web dev",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.29.2"
+  "packageManager": "pnpm@10.29.2",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
 }
