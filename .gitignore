@@ -27,3 +27,8 @@ Thumbs.db
 
 # Never track nested workspace files
 apps/**/pnpm-workspace.yaml
+
+# env anywhere
+**/.env
+**/.env.*
+
