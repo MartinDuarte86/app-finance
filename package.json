@@ -5,17 +5,30 @@
   "description": "",
   "main": "index.js",
   "typecheck": "pnpm -r typecheck",
-  "scripts": { "dev": "concurrently -n API,WEB -c auto \"pnpm -C apps/api start:dev\" \"pnpm -C apps/web dev\"",
+  "scripts": {
+    "dev": "concurrently -n API,WEB -c auto \"pnpm -C apps/api start:dev\" \"pnpm -C apps/web dev\"",
     "dev:api": "pnpm -C apps/api start:dev",
     "dev:web": "pnpm -C apps/web dev",
+    "pm2:build": "pnpm -C apps/api build && pnpm -C apps/web build",
+    "pm2:start": "pnpm run pm2:build && pnpm exec pm2 start ecosystem.config.cjs --update-env",
+    "pm2:restart": "pnpm exec pm2 restart ecosystem.config.cjs --update-env",
+    "pm2:stop": "pnpm exec pm2 stop finance-api finance-web",
+    "pm2:delete": "pnpm exec pm2 delete finance-api finance-web",
+    "pm2:logs": "pnpm exec pm2 logs",
+    "pm2:save": "pnpm exec pm2 save",
+    "pm2:status": "pnpm exec pm2 status",
     "lint": "pnpm -r lint",
     "test": "pnpm -r test"
+  },
+  "engines": {
+    "node": "20.x"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.29.2",
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "pm2": "^6.0.14"
   }
 }

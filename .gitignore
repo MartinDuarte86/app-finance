@@ -24,6 +24,7 @@ yarn-error.log*
 Thumbs.db
 .vscode/
 .idea/
+.txt
 
 # Never track nested workspace files
 apps/**/pnpm-workspace.yaml
